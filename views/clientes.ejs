@@ -1,0 +1,41 @@
+<%- include ('partials/navbar.ejs') %>
+<%- include ('partials/header.ejs') %>
+
+<div id="centralizaTexto">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <center><h1>Clientes</h1></center>
+            </div>
+            <div class="card-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Endereço</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% clientela.forEach(cliente=> { %>
+                            <tr>
+                                <td><i class="fa fa-address-book" aria-hidden="true"></i></td>
+                                <td>
+                                    <%= cliente.nome %>
+                                </td>
+                                <td>
+                                    <%= cliente.cpf %>
+                                </td>
+                                <td>
+                                    <%= cliente.endereco %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ('partials/footer.ejs') %>
