@@ -47,7 +47,7 @@ class ClienteService{
     Update(idC, nomeC, cpfC, enderecoC) {
         Cliente.findByIdAndUpdate(idC, {
             nome : nomeC,
-            cpf : cpf,
+            cpf : cpfC,
             endereco : enderecoC
         }).then(() => {
             console.log(`Dados do cliente com id: ${id} alterados com sucesso!`)

@@ -8,18 +8,17 @@
                 <h1>Cadastro de produtos no sistema</h1>
             </div>
             <div class="card-body">
-                <form action="/produtos/new" method="post">
+                <form action="/produtos/update/<%= produto._id %>" method="post">
                 <label>Nome do produto:</label>
-                <input type="text" name="nomeProd" id="nomeProd" placeholder="Insira o nome do produto" class="form-control" required>
+                <input type="text" name="nomeProd" id="nomeProd" placeholder="Insira o nome do produto" class="form-control" value="<%= produto.nomeProd %>" required>
                 <label>Preço do produto:</label>
-                <input type="text" name="price" id="price" placeholder="Insira o preço do produto" class="form-control" required>
+                <input type="text" name="price" id="price" placeholder="Insira o preço do produto" class="form-control" value="<%= produto.price %>" required>
                 <label>Categoria do produto:</label>
-                <input type="text" name="categ" id="categ" placeholder="Insira a categoria do produto" class="form-control" required>
+                <input type="text" name="categ" id="categ" placeholder="Insira a categoria do produto" class="form-control" value="<%= produto.categ %>" required>
+                <input type="hidden" name="id" value="<%= produto._id %>">
                 <br>
                 <center><center><input type="submit" value="Cadastrar" class="btn btn-success"></center></center>
                 </form>
-                <hr>
-                    <center><a href="/produtosView"><button type="button" class ="btn btn-info">Ver produtos cadastrados</button></a></center>
                 
             </div>
         </div>
