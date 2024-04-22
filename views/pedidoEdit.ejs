@@ -1,0 +1,25 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
+
+<div id="centralizaTexto">
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Alterar pedidos</h1>
+        </div>
+        <div class="card-body">
+            <form action="/pedidos/update/<%= pedido._id %>" method="POST">
+                <label>Código do pedido:</label>
+                <input type="text" name="numPed" id="numPed" placeholder="Insira o nome do cliente" class="form-control" value="<%= pedido.numPedido %>" required>
+                <label>Valor do pedido:</label>
+                <input type="text" name="valor" id="valor" placeholder="Insira o CPF do cliente" class="form-control" value="<%= pedido.value %>" required>
+                <input type="hidden" name="id" value="<%= pedido._id %>">
+                <br>
+                <center><input type="submit" class="btn btn-warning" value="Alterar" onclick="return confirm('Confirma as alterações?')"></center>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+<%- include ('partials/footer.ejs') %>

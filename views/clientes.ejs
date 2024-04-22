@@ -1,68 +1,29 @@
 <%- include ('partials/navbar.ejs') %>
 <%- include ('partials/header.ejs') %>
 
-<div class="container">
-    <div class="card">
-        <div class="card-header">
-            <h1>Cadastrar clientes</h1>
-        </div>
-        <div class="card-body">
-            <form action="/clientes/new" method="post">
-                <label>Nome do cliente:</label>
-                <input type="text" name="nome" id="nome" placeholder="Insira o nome do cliente" class="form-control" required>
-                <label>CPF:</label>
-                <input type="text" name="cpf" id="cpf" placeholder="Insira o CPF do cliente" class="form-control" required>
-                <label>Endereço:</label>
-                <input type="text" name="endereco" id="endereco" placeholder="Insira o endereço do cliente" class="form-control" required>
-                <br>
-                <input type="submit" value="Cadastrar" class="btn btn-success">
-            </form>
-            <hr>
-        </div>
-    </div>
-</div>
-<br>
 <div id="centralizaTexto">
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <center><h1>Clientes</h1></center>
+                <h1>Cadastro de cliente no sistema</h1>
             </div>
             <div class="card-body">
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Nome</th>
-                            <th>CPF</th>
-                            <th>Endereço</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% clientela.forEach(cliente=> { %>
-                            <tr>
-                                <td><i class="fa fa-address-book" aria-hidden="true"></i></td>
-                                <td>
-                                    <%= cliente.nome %>
-                                </td>
-                                <td>
-                                    <%= cliente.cpf %>
-                                </td>
-                                <td>
-                                    <%= cliente.endereco %>
-                                </td>
-                                <td>
-                                    <a style="color: orange;"" href="/clientes/edit/<% cliente._id %>">Editar</a>
-                                </td>
-                                <td>
-                                    <a style="color: red;"" href="/clientes/delete/<% cliente._id %>">Excluir</a>
-                                </td>
-                            </tr>
-                            <% }) %>
-                    </tbody>
-                </table>
+                <form action="/clientes/new" method="post">
+                    <label>Nome do cliente:</label>
+                    <input type="text" name="nome" id="nome" placeholder="Insira o nome do cliente" class="form-control" required>
+                    <label>CPF:</label>
+                    <input type="text" name="cpf" id="cpf" placeholder="Insira o CPF do cliente" class="form-control" required>
+                    <label>Endereço:</label>
+                    <input type="text" name="endereco" id="endereco" placeholder="Insira o endereço do cliente" class="form-control" required>
+                    <br>
+                    <center><input type="submit" value="Cadastrar" class="btn btn-success"></center>
+                </form>
+                <hr>
+                    <center><a href="/clientesView"><button type="button" class ="btn btn-info">Ver clientes cadastrados</button></a></center>
+                
             </div>
         </div>
     </div>
 </div>
+    
 <%- include ('partials/footer.ejs') %>

@@ -5,29 +5,23 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <center><h1>Pedidos</h1></center>
+                <h1>Cadastro de pedidos no sistema</h1>
             </div>
             <div class="card-body">
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Código</th>
-                            <th>Valor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% pedidos.forEach(pedido => { %>
-                        <tr>
-                            <td><i class="fas fa-shopping-cart" aria-hidden="true"></i></td>
-                            <td><%= pedido.numPedido %></td>
-                            <td><%= pedido.value.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %></td>
-                        </tr>
-                        <% }) %>
-                    </tbody>
-                </table>
+                <form action="/pedidos/new" method="post">
+                <label>Código do pedido:</label>
+                <input type="text" name="numPed" id="numPed" placeholder="Insira o código do pedido" class="form-control" required>
+                <label>Valor do pedido:</label>
+                <input type="text" name="valor" id="valor" placeholder="Insira o valor do pedido (R$)" class="form-control" required>
+                <br>
+                <center><center><input type="submit" value="Cadastrar" class="btn btn-success"></center></center>
+                </form>
+                <hr>
+                    <center><a href="/pedidosView"><button type="button" class ="btn btn-info">Ver pedidos no sistema</button></a></center>
+                
             </div>
         </div>
     </div>
 </div>
+    
 <%- include ('partials/footer.ejs') %>

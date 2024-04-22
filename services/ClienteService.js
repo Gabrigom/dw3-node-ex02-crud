@@ -5,7 +5,7 @@ const Cliente = mongoose.model("Cliente", cliente)
 
 // Em clientes temos os 4 métodos do CRUD (Cadatrar, ler, alterar e excluir)
 
-class ClienteServices{
+class ClienteService{
     // Método para SELECIONAR todos os clientes do banco
     SelectAll(){
         const clientela = Cliente.find()
@@ -39,22 +39,22 @@ class ClienteServices{
     // Método para SELECIONAR somente um cliente (visando a exclusão ou alteração)
     SelectOne(id){
         // Análogo ao SelectAll, mas usamos id no findOne como parâmetro para restringir a busca
-        const clienteUnico = Cliente.findOne(id)
+        const clienteUnico = Cliente.findOne({_id: id})
         return clienteUnico
     }
 
     // Método para ALTERAR o cliente
-    Update(idC, nomeC, cpfC, enderecoC){
+    Update(idC, nomeC, cpfC, enderecoC) {
         Cliente.findByIdAndUpdate(idC, {
-            nome: nomeC,
-            cpf: cpfC,
-            endereco: enderecoC
+            nome : nomeC,
+            cpf : cpfC,
+            endereco : enderecoC
         }).then(() => {
-            console.log(`Cliente com a id ${id} teve seus dados alterados com sucesso!`)
+            console.log(`Dados do cliente com id: ${id} alterados com sucesso!`)
         }).catch(err => {
-            console.log(err)
+            console.log(`Teu erro: ${err}`)
         })
     }
 }
 
-export default new ClienteServices()
+export default new ClienteService()

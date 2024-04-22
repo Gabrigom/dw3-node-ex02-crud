@@ -9,30 +9,36 @@ get: método GET, pega dados pela barra do navegador, processa e por vezes rende
 post: metodo POST, pega dados enviados por formulários, processa e redireciona
 */
 
-// -> clientes.ejs
-router.get("/clientes", function(req, res) {
+// -> clientesList.ejs
+router.get("/clientesView", function(req, res) {
     ClienteService.SelectAll().then((clientes) => {
-        res.render("clientes", {
+        res.render("clienteList", {
             clientela: clientes
         })
     })
 })
 
+// -> clientes.ejs
+router.get("/clientes", function(req, res) {
+    res.render("clientes")
+})
+
 // ROTA CADASTRO DE CLIENTES
 router.post("/clientes/new", function(req, res) {
     ClienteService.Create(req.body.nome, req.body.cpf, req.body.endereco)
-    res.redirect("/clientes")
+    res.redirect("/clientesView")
 })
 
 // ROTA EXCLUSÃO DE CLIENTE
 router.get("/clientes/delete/:id", function(req, res) {
     const id = req.params.id // Tira o parâmetro id da URL, id q vem do forEach da view
     ClienteService.Delete(id)
-    res.redirect("/clientes")
+    res.redirect("/clientesView")
 })
 
 // -> clienteEdit.ejs
-router.get("/clientes/update/:id", function(req, res) {
+router.get("/clientes/edit/:id", function(req, res) {
+    const id = req.params.id
     ClienteService.SelectOne(id).then((cliente) => {
         res.render("clienteEdit", {
             cliente: cliente
@@ -41,10 +47,10 @@ router.get("/clientes/update/:id", function(req, res) {
 })
 
 // ROTA DE ALTERAÇÃO DE CLIENTE
-router.post("clientes/update/:id", function(req, res){
+router.post("/clientes/update/:id", function(req, res){
     // Cria input hidden para segurar o valor de id e usar no post
-    ClienteService.Update(req.body.id, req.body, req.body.cpf, req.body.endereco)
-    res.redirect("/clientes")
+    ClienteService.Update(req.body.id, req.body.nome, req.body.cpf, req.body.endereco)
+    res.redirect("/clientesView")
 })
 
 export default router
