@@ -44,11 +44,11 @@ class ClienteService{
     }
 
     // Método para ALTERAR o cliente
-    Update(id, nome, cpf, endereco) {
-        Cliente.findByIdAndUpdate(id, {
-            nome : nome,
+    Update(idC, nomeC, cpfC, enderecoC) {
+        Cliente.findByIdAndUpdate(idC, {
+            nome : nomeC,
             cpf : cpf,
-            endereco : endereco
+            endereco : enderecoC
         }).then(() => {
             console.log(`Dados do cliente com id: ${id} alterados com sucesso!`)
         }).catch(err => {

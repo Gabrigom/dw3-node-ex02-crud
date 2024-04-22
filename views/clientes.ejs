@@ -5,7 +5,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h1>Cadastro de clientes</h1>
+                <h1>Cadastro de cliente no sistema</h1>
             </div>
             <div class="card-body">
                 <form action="/clientes/new" method="post">
@@ -19,50 +19,11 @@
                     <center><input type="submit" value="Cadastrar" class="btn btn-success"></center>
                 </form>
                 <hr>
+                    <center><a href="/clientesView"><button type="button" class ="btn btn-info">Ver clientes cadastrados</button></a></center>
+                
             </div>
         </div>
     </div>
 </div>
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <center><h1>Lista de Clientes</h1></center>
-            </div>
-            <div class="card-body">
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Nome</th>
-                            <th>CPF</th>
-                            <th>Endereço</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% clientela.forEach(cliente=> { %>
-                            <tr>
-                                <td><i class="fa fa-address-book" aria-hidden="true"></i></td>
-                                <td>
-                                    <%= cliente.nome %>
-                                </td>
-                                <td>
-                                    <%= cliente.cpf %>
-                                </td>
-                                <td>
-                                    <%= cliente.endereco %>
-                                </td>
-                                <td>
-                                    <a style="color: orange;"" href="/clientes/edit/<%= cliente._id %>">Editar</a>
-                                </td>
-                                <td>
-                                    <a style="color: red;"" href="/clientes/delete/<%= cliente._id %>">Excluir</a>
-                                </td>
-                            </tr>
-                            <% }) %>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
+    
 <%- include ('partials/footer.ejs') %>

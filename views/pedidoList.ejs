@@ -1,0 +1,45 @@
+<%- include ('partials/navbar.ejs') %>
+<%- include ('partials/header.ejs') %>
+
+<div id="centralizaTexto">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <center><h1>Pedidos</h1></center>
+            </div>
+            <div class="card-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Código</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% pedidos.forEach(pedido => { %>
+                        <tr>
+                            <td><i class="fas fa-shopping-cart" aria-hidden="true"></i></td>
+                            <td>
+                                <%= pedido.numPedido %>
+                            </td>
+                            <td>
+                                <%= pedido.value.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %>
+                            </td>
+                            <td>
+                                    <a style="color: #ff8c00;"" href="/pedidos/edit/<%= pedido._id %>">Editar</a>
+                                </td>
+                                <td>
+                                    <a style="color: red;"" href="/pedidos/delete/<%= pedido._id %>">Excluir</a>
+                                </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+                <hr>
+                <center><a href="/pedidos"><button type="button" class ="btn btn-primary">Cadastrar pedidos</button></a></center>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ('partials/footer.ejs') %>

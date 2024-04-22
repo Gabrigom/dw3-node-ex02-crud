@@ -1,10 +1,11 @@
-<%- include ('partials/navbar.ejs') %>
 <%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
 
+<div id="centralizaTexto">
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h1>Atualizar cliente</h1>
+            <h1>Alterar cliente</h1>
         </div>
         <div class="card-body">
             <form action="/clientes/update/<%= cliente._id %>" method="POST">
@@ -16,12 +17,11 @@
                 <input type="text" name="endereco" id="endereco" placeholder="Insira o endereço do cliente" class="form-control" value="<%= cliente.endereco %>" required>
                 <input type="hidden" name="id" value="<%= cliente._id %>">
                 <br>
-                <input type="submit" class="btn btn-warning" value="Alterar" onclick="return confirm('Confirma as alterações?')">
+                <center><input type="submit" class="btn btn-warning" value="Alterar" onclick="return confirm('Confirma as alterações?')"></center>
             </form>
         </div>
-        <hr>
     </div>
 </div>
-
+</div>
 
 <%- include ('partials/footer.ejs') %>
