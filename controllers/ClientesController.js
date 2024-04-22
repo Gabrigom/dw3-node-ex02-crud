@@ -32,7 +32,8 @@ router.get("/clientes/delete/:id", function(req, res) {
 })
 
 // -> clienteEdit.ejs
-router.get("/clientes/update/:id", function(req, res) {
+router.get("/clientes/edit/:id", function(req, res) {
+    const id = req.params.id
     ClienteService.SelectOne(id).then((cliente) => {
         res.render("clienteEdit", {
             cliente: cliente
@@ -41,7 +42,7 @@ router.get("/clientes/update/:id", function(req, res) {
 })
 
 // ROTA DE ALTERAÇÃO DE CLIENTE
-router.post("clientes/update/:id", function(req, res){
+router.post("/clientes/update/:id", function(req, res){
     // Cria input hidden para segurar o valor de id e usar no post
     ClienteService.Update(req.body.id, req.body, req.body.cpf, req.body.endereco)
     res.redirect("/clientes")
